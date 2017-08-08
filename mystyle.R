@@ -21,3 +21,12 @@ mystyle$AUClast <- 'AUC' + pot('last', mystyle$subscript) + ' (ng·h/mL)'
 mystyle$Cmax <- 'C' + pot('max', mystyle$subscript) + ' (ng/mL)'
 mystyle$CLR <- 'CL' + pot('R', mystyle$subscript) + ' (L/h)'
 
+# Finalization
+
+File <- 'docs/lg-raw'
+system(paste0('rm ', File , '-*.docx'))
+wordfile <- paste0(File, '-', gsub('[^0-9]', '-', Sys.time()), '.docx')
+writeDoc(doc, file = wordfile)
+print(wordfile)
+if (interactive() == TRUE) browseURL(wordfile)
+
