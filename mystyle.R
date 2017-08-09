@@ -23,10 +23,20 @@ mystyle$CLR <- 'CL' + pot('R', mystyle$subscript) + ' (L/h)'
 
 # Finalization
 
-File <- 'docs/lg-raw'
-system(paste0('rm ', File , '-*.docx'))
-wordfile <- paste0(File, '-', gsub('[^0-9]', '-', Sys.time()), '.docx')
-writeDoc(doc, file = wordfile)
-print(wordfile)
-if (interactive() == TRUE) browseURL(wordfile)
+#File <- 'docs/lg-raw'
+#system(paste0('rm ', File , '-*.docx'))
+#wordfile <- paste0(File, '-', gsub('[^0-9]', '-', Sys.time()), '.docx')
+#writeDoc(doc, file = wordfile)
+#print(wordfile)
+#if (interactive() == TRUE) browseURL(wordfile)
 
+fastdoc <- function(df, Level = 4, Caption = "", pagebreak = TRUE){
+  
+  Table <- vanilla.table(df)
+  Table[] <- parProperties(text.align = "left", padding = 0)
+  
+  if (Caption != "") doc <<- addTitle(doc , Caption, level = Level)
+  doc <<- addFlexTable(doc , Table)
+  
+  if (pagebreak == TRUE) doc <<- addPageBreak(doc)
+}
