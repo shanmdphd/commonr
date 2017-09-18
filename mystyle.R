@@ -1,8 +1,7 @@
-# potsubsuper
-
+#' mystyle.R
 #' make a flex table with border setting.
 
-
+# subscript, superscript
 
 potsub <- function(char) ReporteRs::pot(char, textProperties(vertical.align = 'subscript'))
 potsuper <- function(char) ReporteRs::pot(char, textProperties(vertical.align = 'superscript'))
