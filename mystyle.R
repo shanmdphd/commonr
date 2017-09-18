@@ -1,5 +1,7 @@
 #' mystyle.R
-#' make a flex table with border setting.
+#' 
+#' functions that make a flex table with border setting and
+#' pot that contains other parameter setting.
 
 # subscript, superscript
 
@@ -41,6 +43,7 @@ fastdoc <- function(df, Level = 4, Caption = "", pagebreak = TRUE){
 # PK parameters ----
 
 # mad
+
 mystyle$Cmax <- 'C' + pot('max', mystyle$subscript) + ' (ng/mL)'
 mystyle$AUC24 <- 'AUC' + pot('0-24', mystyle$subscript) + ' (ng·h/mL)'
 mystyle$Tmax <- 'T' + pot('max', mystyle$subscript) + ' (hr)'
@@ -53,3 +56,30 @@ mystyle$RAUCmax <- 'RAU C'+ pot('max', mystyle$subscript)
 # sad
 mystyle$AUClast <- 'AUC' + pot('last', mystyle$subscript) + ' (ng·h/mL)'
 mystyle$CLR <- 'CL' + pot('R', mystyle$subscript) + ' (L/h)'
+
+param <- list()
+
+param$AUCinf <- "AUC" + pot("0-∞", mystyle$subscript) + " (ng·h/mL)"
+param$AUCinfDose <- "AUC" + pot("0-∞", mystyle$subscript) + "/dose (ng·h/mL/mg)"
+param$CmaxDose <- "C" + pot("max", mystyle$subscript) + "/dose (ng/mL/mg)"
+param$Vz <- "V" + pot("z", mystyle$subscript) + " (L)"
+param$Vdss <- "V" + pot("d,ss", mystyle$subscript) + " (L)"
+param$CL <- "CL (L/h)"
+param$HL <- "t" + pot("1/2β", mystyle$subscript) + " (h)"
+param$Ae <- "A" + pot("e", mystyle$subscript) + " (mg)"
+param$AUCtau <- "AUC" + potsub("τ,1st dose") + " (ng·h/mL)"
+param$AUCtauss <- "AUC" + potsub("τ,ss") + " (ng·h/mL)"
+param$Cmax1st <- "C" + potsub("max,1st dose") + " (ng/mL)"
+param$Cmaxss <- "C" + potsub("max,ss") + " (ng/mL)"
+param$Cavss <- "C" + potsub("av,ss") + " (ng/mL)"
+param$CLss <- "CL" + potsub("ss") + " (L/h)"
+param$Vz <- "V" + potsub("z") + " (L)"
+param$Vdss <- "V" + potsub("d,ss") + " (L)"
+param$HL <- "t" + potsub("1/2β") + " (L)"
+param$HLeff <-  "t" + potsub("1/2,eff") + " (L)"
+param$obsAI <-  "Observed AI" + potsuper("a")
+param$predAI <-  "Predicted AI"
+param$Ae1st <-  "A" + potsub("e,1st dose") + " (mg)"
+param$Ae <-  "A" + potsub("e,last dose") + " (mg)"
+param$CLR1st <-  "CL" + potsub("R,1st dose") + " (L/h)"
+param$CLRlast <-  "CL" + potsub("R,last dose") + " (L/h)"
