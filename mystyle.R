@@ -1,3 +1,7 @@
+# setup ----
+
+library(ReporteRs)
+
 #' mystyle.R
 #' 
 #' functions that make a flex table with border setting and
@@ -5,30 +9,8 @@
 
 # subscript, superscript
 
-potsub <- function(char) ReporteRs::pot(char, textProperties(vertical.align = 'subscript'))
-potsuper <- function(char) ReporteRs::pot(char, textProperties(vertical.align = 'superscript'))
-
-mystyle <- list()
-
-# Style
-
-mystyle$no <- borderProperties( width = 0 )
-mystyle$big <- borderProperties( width = 2 )
-mystyle$std <- borderProperties( width = 1 )
-mystyle$another <- borderProperties(width = 2, color = 'red', style = 'dashed')
-mystyle$right3 <- parProperties( text.align = 'right', padding = 3 )
-mystyle$bottom5 <-  cellProperties(padding.top = 10, vertical.align = 'bottom')
-mystyle$subscript <- textProperties(vertical.align = 'subscript')
-
-# Finalization
-
-#File <- 'docs/lg-raw'
-#system(paste0('rm ', File , '-*.docx'))
-#wordfile <- paste0(File, '-', gsub('[^0-9]', '-', Sys.time()), '.docx')
-#writeDoc(doc, file = wordfile)
-#print(wordfile)
-#if (interactive() == TRUE) browseURL(wordfile)
-
+potsub <- function(char) pot(char, textProperties(vertical.align = 'subscript'))
+potsuper <- function(char) pot(char, textProperties(vertical.align = 'superscript'))
 fastdoc <- function(df, Level = 4, Caption = "", pagebreak = TRUE){
   
   Table <- vanilla.table(df)
@@ -39,6 +21,15 @@ fastdoc <- function(df, Level = 4, Caption = "", pagebreak = TRUE){
   
   if (pagebreak == TRUE) doc <<- addPageBreak(doc)
 }
+
+mystyle <- list()
+mystyle$no <- borderProperties( width = 0 )
+mystyle$big <- borderProperties( width = 2 )
+mystyle$std <- borderProperties( width = 1 )
+mystyle$another <- borderProperties(width = 2, color = 'red', style = 'dashed')
+mystyle$right3 <- parProperties( text.align = 'right', padding = 3 )
+mystyle$bottom5 <-  cellProperties(padding.top = 10, vertical.align = 'bottom')
+mystyle$subscript <- textProperties(vertical.align = 'subscript')
 
 # PK parameters ----
 
@@ -83,3 +74,13 @@ param$Ae1st <-  "A" + potsub("e,1st dose") + " (mg)"
 param$Ae <-  "A" + potsub("e,last dose") + " (mg)"
 param$CLR1st <-  "CL" + potsub("R,1st dose") + " (L/h)"
 param$CLRlast <-  "CL" + potsub("R,last dose") + " (L/h)"
+
+# Finalization ----
+
+#File <- 'docs/lg-raw'
+#system(paste0('rm ', File , '-*.docx'))
+#wordfile <- paste0(File, '-', gsub('[^0-9]', '-', Sys.time()), '.docx')
+#writeDoc(doc, file = wordfile)
+#print(wordfile)
+#if (interactive() == TRUE) browseURL(wordfile)
+
